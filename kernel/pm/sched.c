@@ -98,14 +98,10 @@ PUBLIC void yield(void)
 		 * Process with higher
 		 * waiting time found.
 		 */
-		
-		int p_prio = p->priority + p->nice;
-		int next_prio = next->priority + next->nice;
 
-		if ((p_prio < next_prio) || ( (p_prio == next_prio) && (p->counter > next->counter)) ) 
+		if ( p->counter > next->counter) ) 
 		{
 			next->counter++;  
-			next->priority--;
 			next = p;
 		}
 			
@@ -115,7 +111,6 @@ PUBLIC void yield(void)
 		 */
 		else {
 			p->counter++;
-			p->priority--;
 		}
 	}
 	
