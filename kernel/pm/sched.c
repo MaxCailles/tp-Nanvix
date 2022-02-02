@@ -88,41 +88,38 @@ PUBLIC void yield(void)
 	}
 
 	/* Choose a process to run next. */
-
 	next = IDLE;
-	
+
+
+	/* loop for the end of the table */ 
 	for (p = curr_proc; p <= LAST_PROC; p++)
 	{
 		/* Skip non-ready process. */
 		if ((p->state != PROC_READY) || (p == curr_proc))
 		{
-			//kprintf("skip apres");
 			continue;
 		}
-		/* Switch to next process. */
 		else
 		{
 			next = p;
-			//kprintf("trouve apres");
 			break;
 		}
 	}
-	if (next == IDLE)
+	
+	if (next == IDLE) /* if we didn't find any next process */ 
 	{
-
+		/* loop for the first part of the table */ 
 		for (p = FIRST_PROC; p < curr_proc; p++)
 		{
 			/* Skip non-ready process. */
 			if (p->state != PROC_READY)
 			{
-			//	kprintf("skip avant");
 				continue;
 			}
-			/* Switch to next process. */
+			
 			else
 			{
 				next = p;
-			//	kprintf("trouve avant");
 				break;
 			}
 		}
