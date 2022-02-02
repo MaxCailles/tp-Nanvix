@@ -102,19 +102,18 @@ PUBLIC void yield(void)
 	// Sort the different process depending on their priority
 	for (p = FIRST_PROC; p <= LAST_PROC; p++)
 	{
-		if (p->state != PROC_READY)   // Skip not ready proccess
+		// Skip not ready proccess
+		if (p->state != PROC_READY)   
 			continue;
-
-		int prio = (p->nice / (NICEMAX/NBQUEUES)); 
-		if (prio >= NBQUEUES)
-			prio = NBQUEUES - 1;
+		// Compute the number of the queue and sort 
+		int prio = ((p->nice * NBQUEUES)/ NICEMAX); 
 		queues[prio][processQueue[prio]++] = p;
 	}
 
 
 	/* Choose a process to run next  */
-	int Empty=1;
 	next = IDLE;
+	int Empty = 1;
 	for (int i = 0; i < NBQUEUES; i++)
 	{
 		//for each processQueue, do same code than basic version 
