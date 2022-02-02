@@ -25,6 +25,11 @@
 #include <nanvix/klib.h>
 #include <signal.h>
 
+#define NICEMAX 40
+#define NBQUEUES 5
+#define NBPERQUEUE 30
+
+
 /**
  * @brief Schedules a process to execution.
  * 
@@ -87,48 +92,53 @@ PUBLIC void yield(void)
 			p->alarm = 0, sndsig(p, SIGALRM);
 	}
 
-	/* Choose a process to run next. */
-	next = IDLE;
+	struct process *queues[NBQUEUES][NBPERQUEUE];
+	int processQueue[NBQUEUES];
 
+	for (int i = 0; i < NBQUEUES; i++){
+		processQueue[i] = 0;
+	}
 
-	/* loop for the end of the table */ 
-	for (p = curr_proc; p <= LAST_PROC; p++)
+	// Sort the different process depending on their priority
+	for (p = FIRST_PROC; p <= LAST_PROC; p++)
 	{
-		/* Skip non-ready process. */
-		if ((p->state != PROC_READY) || (p == curr_proc))
-		{
+		if (p->state != PROC_READY)   // Skip not ready proccess
 			continue;
-		}
-		else
-		{
-			next = p;
-			break;
-		}
+
+		int prio = (p->nice / (NICEMAX/NBQUEUES)); 
+		if (prio >= NBQUEUES)
+			prio = NBQUEUES - 1;
+		queues[prio][processQueue[prio]++] = p;
 	}
-	
-	if (next == IDLE) /* if we didn't find any next process */ 
+
+
+	/* Choose a process to run next  */
+	int Empty=1;
+	next = IDLE;
+	for (int i = 0; i < NBQUEUES; i++)
 	{
-		/* loop for the first part of the table */ 
-		for (p = FIRST_PROC; p < curr_proc; p++)
+		//for each processQueue, do same code than basic version 
+		for (int j = 0; j < processQueue[i]; j++)
 		{
-			/* Skip non-ready process. */
-			if (p->state != PROC_READY)
-			{
-				continue;
-			}
+			struct process *p = queues[i][j];
 			
-			else
+			if (p->counter > next->counter)
 			{
+				next->counter++;
 				next = p;
-				break;
 			}
+			else
+				p->counter++;
 		}
+		if (!Empty)
+			break;
 	}
 
+
+	/* Switch to next process. */
+	next->priority = PRIO_USER;
 	next->state = PROC_RUNNING;
-
+	next->counter = PROC_QUANTUM;
 	if (curr_proc != next)
-	{
 		switch_to(next);
-	}
 }
