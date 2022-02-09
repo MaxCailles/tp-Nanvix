@@ -1,0 +1,3 @@
+- Rajouter les signatures des fonctions appel système (sys_semop,sys_semctl,sys_semget) dans syscall.h 
+- Création des .c (sem.c,semctl.c, semget.c, semop.c) 
+- definition de la struct semaphore + liste chainée.
