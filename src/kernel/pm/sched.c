@@ -22,8 +22,8 @@
 #include <nanvix/const.h>
 #include <nanvix/hal.h>
 #include <nanvix/pm.h>
-#include <signal.h>
 #include <nanvix/klib.h>
+#include <signal.h>
 
 /**
  * @brief Schedules a process to execution.
@@ -54,84 +54,81 @@ PUBLIC void stop(void)
  * @note The process must stopped to be resumed.
  */
 PUBLIC void resume(struct process *proc)
-{	
+{
 	/* Resume only if process has stopped. */
 	if (proc->state == PROC_STOPPED)
 		sched(proc);
 }
-
-
-/**
-* Compute the priority of the given processus
-*/
-int calc_prio(struct process *proc) {
-            /*variables used to set how the nice and the priority will affect the final result. default is 1:1*/
-            int prio_weight = 1;
-            int nice_weight = 1;
-
-			return prio_weight * proc->priority - nice_weight * proc->nice;
-		}
 
 /**
  * @brief Yields the processor.
  */
 PUBLIC void yield(void)
 {
-    struct process *p;    /* Working process.     */
-    struct process *next; /* Next process to run. */
+	struct process *p;	  /* Working process.     */
+	struct process *next; /* Next process to run. */
 
-    /* Re-schedule process for execution. */
-    if (curr_proc->state == PROC_RUNNING)
-        sched(curr_proc);
+	/* Re-schedule process for execution. */
+	if (curr_proc->state == PROC_RUNNING)
+		sched(curr_proc);
 
-    /* Remember this process. */
-    last_proc = curr_proc;
+	/* Remember this process. */
+	last_proc = curr_proc;
 
-    /* Check alarm. */
-    for (p = FIRST_PROC; p <= LAST_PROC; p++)
-    {
-        /* Skip invalid processes. */
-        if (!IS_VALID(p))
-            continue;
-        
-        /* Alarm has expired. */
-        if ((p->alarm) && (p->alarm < ticks))
-            p->alarm = 0, sndsig(p, SIGALRM);
-    }
+	/* Check alarm. */
+	for (p = FIRST_PROC; p <= LAST_PROC; p++)
+	{
+		/* Skip invalid processes. */
+		if (!IS_VALID(p))
+			continue;
 
-/* Choose a process to run next. */
-    next = IDLE;
-    for (p = FIRST_PROC; p <= LAST_PROC; p++)
-    {
-        /* Skip non-ready process. */
-        if (p->state != PROC_READY)
-            continue;
+		/* Alarm has expired. */
+		if ((p->alarm) && (p->alarm < ticks))
+			p->alarm = 0, sndsig(p, SIGALRM);
+	}
+
+	/* Choose a process to run next. */
+	next = IDLE;
 
 
-        int p_prio = calc_prio(p);
-        int next_prio = calc_prio(next);
+	/* loop for the end of the table */ 
+	for (p = curr_proc; p <= LAST_PROC; p++)
+	{
+		/* Skip non-ready process. */
+		if ((p->state != PROC_READY) || (p == curr_proc))
+		{
+			continue;
+		}
+		else
+		{
+			next = p;
+			break;
+		}
+	}
+	
+	if (next == IDLE) /* if we didn't find any next process */ 
+	{
+		/* loop for the first part of the table */ 
+		for (p = FIRST_PROC; p < curr_proc; p++)
+		{
+			/* Skip non-ready process. */
+			if (p->state != PROC_READY)
+			{
+				continue;
+			}
+			
+			else
+			{
+				next = p;
+				break;
+			}
+		}
+	}
 
-        if ((p_prio < next_prio) || ( (p_prio == next_prio) && (p->counter > next->counter)) ) 
-        {
-            next->counter++;
-            next->priority--;
-            next = p; 
-        }
+	next->state = PROC_RUNNING;
 
-        /*
-         * Increment waiting
-         * time of process.
-         */
-        else {
-            p->counter++;
-            p->priority--;
-        }
-    }
-    
-    /* Switch to next process. */
-    next->priority = PRIO_USER;
-    next->state = PROC_RUNNING;
-    next->counter = PROC_QUANTUM;
-    if (curr_proc != next)
-        switch_to(next);
+	if (curr_proc != next)
+	{
+		switch_to(next);
+	}
 }
