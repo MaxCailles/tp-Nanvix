@@ -29,6 +29,7 @@
 #include <unistd.h>
 #include <string.h>
 
+
 /* Test flags. */
 #define EXTENDED (1 << 0)
 #define FULL     (1 << 1)
@@ -425,6 +426,7 @@ static int sched_test3(void)
  */
 int semaphore_test3(void)
 {
+	printf("init\n");
 	pid_t pid;                  /* Process ID.              */
 	int buffer_fd;              /* Buffer file descriptor.  */
 	int empty;                  /* Empty positions.         */
@@ -433,16 +435,21 @@ int semaphore_test3(void)
 	const int BUFFER_SIZE = 32; /* Buffer size.             */
 	const int NR_ITEMS = 512;   /* Number of items to send. */
 	
+	printf("debut\n");
 	/* Create buffer.*/
 	buffer_fd = open("buffer", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
 	if (buffer_fd < 0)
 		return (-1);
-	
+
+
 	/* Create semaphores. */
+		printf("tente\n");
 	SEM_CREATE(mutex, 1);
+		printf("Reussi\n");
 	SEM_CREATE(empty, 2);
 	SEM_CREATE(full, 3);
-		
+
+
 	/* Initialize semaphores. */
 	SEM_INIT(full, 0);
 	SEM_INIT(empty, BUFFER_SIZE);
@@ -653,6 +660,7 @@ int main(int argc, char **argv)
 		else if (!strcmp(argv[i], "ipc"))
 		{
 			printf("Interprocess Communication Tests\n");
+			semaphore_test3();
 			printf("  producer consumer [%s]\n",
 				(!semaphore_test3()) ? "PASSED" : "FAILED");
 		}

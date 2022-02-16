@@ -928,6 +928,7 @@
     <member refid="pm_8h_1acb32db08acb06cfe44afad4cf54d76c0" kind="function"><name>yield</name></member>
     <member refid="pm_8h_1aefa01c667ff0e82d27a443c5df870e51" kind="function"><name>resume</name></member>
     <member refid="pm_8h_1a5cc15ac84c594de4dfe3e9e23cc71e1d" kind="function"><name>stop</name></member>
+    <member refid="pm_8h_1ad6e1e33ce2b69d813392a3ab23585fe0" kind="function"><name>initSempaphores</name></member>
     <member refid="pm_8h_1a70d569637867f1558483035fa41901eb" kind="function"><name>create</name></member>
     <member refid="pm_8h_1ae122e8adbbb522693e827ca15013c188" kind="function"><name>up</name></member>
     <member refid="pm_8h_1ab75f4e7446c32995e83a4885911cad32" kind="function"><name>down</name></member>

@@ -1,6 +1,7 @@
 /* Implémentation de l'abstraction sémaphore sem.h */
 
 #include <nanvix/pm.h>
+#include <nanvix/klib.h>
 #include <nanvix/syscall.h>
 
 /* semaphore  definition*/
@@ -17,6 +18,7 @@ static int nbSem = 0;
 
 void initSempaphores()
 {
+    kprintf("Init Semaphores\n");
     for (int i = 0; i < NB_SEM_MAX; i++)
     {
         semaphores[i].valide = 0;

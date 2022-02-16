@@ -292,6 +292,7 @@
 
 	#define NB_SEM_MAX 2 * PROC_MAX  // At least 2 semaphores per proc
 	
+	EXTERN void initSempaphores();
 	EXTERN int create(int key);
 	EXTERN int up(int idSem);
 	EXTERN int down(int idSem);

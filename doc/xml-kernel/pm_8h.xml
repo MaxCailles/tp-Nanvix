@@ -379,6 +379,19 @@
         </inbodydescription>
         <location file="include/nanvix/pm.h" line="280" column="13" bodyfile="src/kernel/pm/sched.c" bodystart="42" bodyend="47" declfile="include/nanvix/pm.h" declline="280" declcolumn="13"/>
       </memberdef>
+      <memberdef kind="function" id="pm_8h_1ad6e1e33ce2b69d813392a3ab23585fe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>EXTERN void</type>
+        <definition>EXTERN void initSempaphores</definition>
+        <argsstring>()</argsstring>
+        <name>initSempaphores</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/nanvix/pm.h" line="295" column="13" bodyfile="src/kernel/sys/sem.c" bodystart="19" bodyend="26" declfile="include/nanvix/pm.h" declline="295" declcolumn="13"/>
+      </memberdef>
       <memberdef kind="function" id="pm_8h_1a70d569637867f1558483035fa41901eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN int</type>
         <definition>EXTERN int create</definition>
@@ -394,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="295" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="26" bodyend="52" declfile="include/nanvix/pm.h" declline="295" declcolumn="12"/>
+        <location file="include/nanvix/pm.h" line="296" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="28" bodyend="54" declfile="include/nanvix/pm.h" declline="296" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="pm_8h_1ae122e8adbbb522693e827ca15013c188" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN int</type>
@@ -411,7 +424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="296" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="69" bodyend="85" declfile="include/nanvix/pm.h" declline="296" declcolumn="12"/>
+        <location file="include/nanvix/pm.h" line="297" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="71" bodyend="87" declfile="include/nanvix/pm.h" declline="297" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="pm_8h_1ab75f4e7446c32995e83a4885911cad32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN int</type>
@@ -428,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="297" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="87" bodyend="100" declfile="include/nanvix/pm.h" declline="297" declcolumn="12"/>
+        <location file="include/nanvix/pm.h" line="298" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="89" bodyend="102" declfile="include/nanvix/pm.h" declline="298" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="pm_8h_1ae659ef5d936173401fc099598ece01d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN int</type>
@@ -445,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="298" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="102" bodyend="106" declfile="include/nanvix/pm.h" declline="298" declcolumn="12"/>
+        <location file="include/nanvix/pm.h" line="299" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="104" bodyend="108" declfile="include/nanvix/pm.h" declline="299" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="pm_8h_1a132ace4598dbaad6e8c8059c0930536c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN void</type>
@@ -466,7 +479,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="299" column="13" bodyfile="src/kernel/sys/sem.c" bodystart="59" bodyend="62" declfile="include/nanvix/pm.h" declline="299" declcolumn="13"/>
+        <location file="include/nanvix/pm.h" line="300" column="13" bodyfile="src/kernel/sys/sem.c" bodystart="61" bodyend="64" declfile="include/nanvix/pm.h" declline="300" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="pm_8h_1a8d93682857c72ec5238cf248d72520de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN int</type>
@@ -483,7 +496,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="300" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="54" bodyend="57" declfile="include/nanvix/pm.h" declline="300" declcolumn="12"/>
+        <location file="include/nanvix/pm.h" line="301" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="56" bodyend="59" declfile="include/nanvix/pm.h" declline="301" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="pm_8h_1a6ca3c1648fa0380bfbdd22e4b3ab188c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EXTERN int</type>
@@ -500,7 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/nanvix/pm.h" line="301" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="64" bodyend="67" declfile="include/nanvix/pm.h" declline="301" declcolumn="12"/>
+        <location file="include/nanvix/pm.h" line="302" column="12" bodyfile="src/kernel/sys/sem.c" bodystart="66" bodyend="69" declfile="include/nanvix/pm.h" declline="302" declcolumn="12"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -674,17 +687,18 @@
 <codeline lineno="292"><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>NB_SEM_MAX<sp/>2<sp/>*<sp/>PROC_MAX<sp/><sp/></highlight><highlight class="comment">//<sp/>At<sp/>least<sp/>2<sp/>semaphores<sp/>per<sp/>proc</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>create(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>up(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>down(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>destroy(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setval(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getval(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isvalid(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>semid);</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_ASM_FILE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"></highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>NANVIX_PM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initSempaphores();</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>create(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>up(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>down(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>destroy(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setval(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getval(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idSem);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>EXTERN<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isvalid(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>semid);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_ASM_FILE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>NANVIX_PM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="include/nanvix/pm.h"/>
   </compounddef>
