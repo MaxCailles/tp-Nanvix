@@ -21,7 +21,10 @@ void initSempaphores()
     kprintf("Init Semaphores\n");
     for (int i = 0; i < NB_SEM_MAX; i++)
     {
+        semaphores[i].key = 0;
         semaphores[i].valide = 0;
+        semaphores[i].value = 0;
+        semaphores[i].waiting_queue = NULL;
     }
 }
 
@@ -46,8 +49,13 @@ int create(int key)
     }
 
     /* create a new semaphore and save it in the array*/
-    semaphore newSemaphore = {key, 0, NULL, 1};
-    semaphores[nbSem] = newSemaphore;
+
+    semaphores[nbSem].key = key;
+    semaphores[nbSem].valide = 1;
+    semaphores[nbSem].value = 0;
+    semaphores[nbSem].waiting_queue = NULL;
+
+    /* return the indice in the table */ 
     int ret = nbSem;
     nbSem++;
     return ret;

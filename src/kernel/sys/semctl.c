@@ -10,7 +10,7 @@ PUBLIC int sys_semctl(int semid, int cmd, int val){
         return -1;
     }
     
-    if (isvalid(semid)){
+    if (!isvalid(semid)){
         return -1;
     }
    
