@@ -267,7 +267,7 @@
 	/*
 	* Create or get a semaphore
 	*/
-	EXTERN int sys_semget(unsigned key);
+	EXTERN int sys_semget(int key);
 
 	/*
 	* Call for control operations on a semaphore

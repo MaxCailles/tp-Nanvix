@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structatadev" kind="struct" language="C++" prot="public">
+    <compoundname>atadev</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structatadev_1ac8bf36fe0577cba66bccda3a6f7e80a4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="213" column="5" bodyfile="src/kernel/dev/ata/ata.c" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1a9a6fba3b6a50cccea2381d4e55d9174f" prot="public" static="no" mutable="no">
+        <type>struct ata_info</type>
+        <definition>struct ata_info info</definition>
+        <argsstring></argsstring>
+        <name>info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="213" column="5" bodyfile="src/kernel/dev/ata/ata.c" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1a6e44a17eef6d95b2e6832c26e469d505" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structprocess" kindref="compound">process</ref> *</type>
+        <definition>struct process* chain</definition>
+        <argsstring></argsstring>
+        <name>chain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="215" column="14" bodyfile="src/kernel/dev/ata/ata.c" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1a439227feff9d7f55384e8780cfc2eb82" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="220" column="5" bodyfile="src/kernel/dev/ata/ata.c" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1a20358970b1abaf992eb85e071e454653" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="221" column="5" bodyfile="src/kernel/dev/ata/ata.c" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1aff39d864a6594bc5f4a5e365282e00fe" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="222" column="5" bodyfile="src/kernel/dev/ata/ata.c" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1ac45b4df584b413d2e8b568f7747c2d52" prot="public" static="no" mutable="no">
+        <type>struct request</type>
+        <definition>struct request requests[ATADEV_QUEUE_SIZE]</definition>
+        <argsstring>[ATADEV_QUEUE_SIZE]</argsstring>
+        <name>requests</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="222" column="5" bodyfile="src/kernel/dev/ata/ata.c" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structatadev_1acfc0200330629017c5fc6e86b954b14a" prot="public" static="no" mutable="no">
+        <type>struct atadev::@5</type>
+        <definition>struct atadev::@5 queue</definition>
+        <argsstring></argsstring>
+        <name>queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/dev/ata/ata.c" line="226" column="7"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>inode</label>
+        <link refid="structinode"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>free_next</edgelabel>
+          <edgelabel>hash_next</edgelabel>
+          <edgelabel>hash_prev</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>sb</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>process</label>
+        <link refid="structprocess"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>pwd</edgelabel>
+          <edgelabel>root</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>fss</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+          <edgelabel>father</edgelabel>
+          <edgelabel>next</edgelabel>
+          <edgelabel>nextInSem</edgelabel>
+          <edgelabel>pgrp</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>fpu</label>
+        <link refid="structfpu"/>
+      </node>
+      <node id="5">
+        <label>buffer</label>
+        <link refid="structbuffer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>free_next</edgelabel>
+          <edgelabel>free_prev</edgelabel>
+          <edgelabel>hash_next</edgelabel>
+          <edgelabel>hash_prev</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>atadev</label>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>superblock</label>
+        <link refid="structsuperblock"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>mp</edgelabel>
+          <edgelabel>root</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>buf</edgelabel>
+          <edgelabel>imap</edgelabel>
+          <edgelabel>zmap</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/kernel/dev/ata/ata.c" line="210" column="8" bodyfile="src/kernel/dev/ata/ata.c" bodystart="211" bodyend="227"/>
+    <listofallmembers>
+      <member refid="structatadev_1a6e44a17eef6d95b2e6832c26e469d505" prot="public" virt="non-virtual"><scope>atadev</scope><name>chain</name></member>
+      <member refid="structatadev_1ac8bf36fe0577cba66bccda3a6f7e80a4" prot="public" virt="non-virtual"><scope>atadev</scope><name>flags</name></member>
+      <member refid="structatadev_1a20358970b1abaf992eb85e071e454653" prot="public" virt="non-virtual"><scope>atadev</scope><name>head</name></member>
+      <member refid="structatadev_1a9a6fba3b6a50cccea2381d4e55d9174f" prot="public" virt="non-virtual"><scope>atadev</scope><name>info</name></member>
+      <member refid="structatadev_1acfc0200330629017c5fc6e86b954b14a" prot="public" virt="non-virtual"><scope>atadev</scope><name>queue</name></member>
+      <member refid="structatadev_1ac45b4df584b413d2e8b568f7747c2d52" prot="public" virt="non-virtual"><scope>atadev</scope><name>requests</name></member>
+      <member refid="structatadev_1a439227feff9d7f55384e8780cfc2eb82" prot="public" virt="non-virtual"><scope>atadev</scope><name>size</name></member>
+      <member refid="structatadev_1aff39d864a6594bc5f4a5e365282e00fe" prot="public" virt="non-virtual"><scope>atadev</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

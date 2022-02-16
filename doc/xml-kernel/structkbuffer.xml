@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structkbuffer" kind="struct" language="C++" prot="public">
+    <compoundname>kbuffer</compoundname>
+    <includes local="no">klib.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structkbuffer_1a91cfbc72f8e908b3f74d64c9f63055b0" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>First character in the buf. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/nanvix/klib.h" line="102" column="10" bodyfile="include/nanvix/klib.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkbuffer_1a6d861c9c8a95cb2b69b65cb7c482f6af" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Next free slot in the buf. <linebreak/>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/nanvix/klib.h" line="103" column="10" bodyfile="include/nanvix/klib.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkbuffer_1ac0ccb55d8eec58dfd289f8882ecee166" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char buffer[KBUFFER_SIZE]</definition>
+        <argsstring>[KBUFFER_SIZE]</argsstring>
+        <name>buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ring buffer. <linebreak/>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/nanvix/klib.h" line="104" column="15" bodyfile="include/nanvix/klib.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkbuffer_1a6e44a17eef6d95b2e6832c26e469d505" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structprocess" kindref="compound">process</ref> *</type>
+        <definition>struct process* chain</definition>
+        <argsstring></argsstring>
+        <name>chain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sleeping chain. <linebreak/>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/nanvix/klib.h" line="105" column="14" bodyfile="include/nanvix/klib.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Kernel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>inode</label>
+        <link refid="structinode"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>free_next</edgelabel>
+          <edgelabel>hash_next</edgelabel>
+          <edgelabel>hash_prev</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>sb</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>process</label>
+        <link refid="structprocess"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>pwd</edgelabel>
+          <edgelabel>root</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>fss</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+          <edgelabel>father</edgelabel>
+          <edgelabel>next</edgelabel>
+          <edgelabel>nextInSem</edgelabel>
+          <edgelabel>pgrp</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>fpu</label>
+        <link refid="structfpu"/>
+      </node>
+      <node id="5">
+        <label>buffer</label>
+        <link refid="structbuffer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>free_next</edgelabel>
+          <edgelabel>free_prev</edgelabel>
+          <edgelabel>hash_next</edgelabel>
+          <edgelabel>hash_prev</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>superblock</label>
+        <link refid="structsuperblock"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>mp</edgelabel>
+          <edgelabel>root</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>buf</edgelabel>
+          <edgelabel>imap</edgelabel>
+          <edgelabel>zmap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>kbuffer</label>
+        <link refid="structkbuffer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/nanvix/klib.h" line="100" column="1" bodyfile="include/nanvix/klib.h" bodystart="101" bodyend="106"/>
+    <listofallmembers>
+      <member refid="structkbuffer_1ac0ccb55d8eec58dfd289f8882ecee166" prot="public" virt="non-virtual"><scope>kbuffer</scope><name>buffer</name></member>
+      <member refid="structkbuffer_1a6e44a17eef6d95b2e6832c26e469d505" prot="public" virt="non-virtual"><scope>kbuffer</scope><name>chain</name></member>
+      <member refid="structkbuffer_1a91cfbc72f8e908b3f74d64c9f63055b0" prot="public" virt="non-virtual"><scope>kbuffer</scope><name>head</name></member>
+      <member refid="structkbuffer_1a6d861c9c8a95cb2b69b65cb7c482f6af" prot="public" virt="non-virtual"><scope>kbuffer</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

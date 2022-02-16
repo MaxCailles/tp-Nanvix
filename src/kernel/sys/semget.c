@@ -1,9 +1,13 @@
 #include <nanvix/syscall.h>
-#include <sys/sem.h>
-#include <errno.h>
+#include <nanvix/pm.h>
 
-PUBLIC int sys_semget(unsigned key){
-	//int ret = create(1,key);
-    key++;
-    return 0;
+
+PUBLIC int sys_semget(int key){
+	
+    /*  key verifications */
+    if ((0 > key) || (key >= NB_SEM_MAX)){
+        return -1;
+    }
+
+    return create(key);
 }

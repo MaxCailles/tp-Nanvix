@@ -203,6 +203,7 @@
     	int nice;                /**< Nice for scheduling.    */
     	unsigned alarm;          /**< Alarm.                  */
 		struct process *next;    /**< Next process in a list. */
+		struct process *nextInSem; /**< Next process in the waiting queue of a semaphore */
 		struct process **chain;  /**< Sleeping chain.         */
 		/**@}*/
 	};
@@ -285,6 +286,19 @@
 	EXTERN struct process *last_proc;
 	EXTERN pid_t next_pid;
 	EXTERN unsigned nprocs;
+
+
+	////////// SEMAPHORES //////////
+
+	#define NB_SEM_MAX 2 * PROC_MAX  // At least 2 semaphores per proc
+	
+	EXTERN int create(int key);
+	EXTERN int up(int idSem);
+	EXTERN int down(int idSem);
+	EXTERN int destroy(int idSem);
+	EXTERN void setval(int idSem, int val);
+	EXTERN int getval(int idSem);
+	EXTERN int isvalid(int semid);
 
 #endif /* _ASM_FILE */
 

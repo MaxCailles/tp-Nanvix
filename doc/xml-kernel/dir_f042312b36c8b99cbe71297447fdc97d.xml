@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_f042312b36c8b99cbe71297447fdc97d" kind="dir">
+    <compoundname>lib/libc/dirent</compoundname>
+    <innerfile refid="lib_2libc_2dirent_2closedir_8c">closedir.c</innerfile>
+    <innerfile refid="lib_2libc_2dirent_2dirent_8c">dirent.c</innerfile>
+    <innerfile refid="lib_2libc_2dirent_2dirent_8h">dirent.h</innerfile>
+    <innerfile refid="lib_2libc_2dirent_2opendir_8c">opendir.c</innerfile>
+    <innerfile refid="lib_2libc_2dirent_2readdir_8c">readdir.c</innerfile>
+    <innerfile refid="lib_2libc_2dirent_2rewinddir_8c">rewinddir.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/libc/dirent/"/>
+  </compounddef>
+</doxygen>

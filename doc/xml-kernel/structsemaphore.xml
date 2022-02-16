@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structsemaphore" kind="struct" language="C++" prot="public">
+    <compoundname>semaphore</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsemaphore_1a35af0be900467fedbb610bd6ea65ed78" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/sys/sem.c" line="9" column="9" bodyfile="src/kernel/sys/sem.c" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsemaphore_1ac4f474c82e82cbb89ca7c36dd52be0ed" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/sys/sem.c" line="10" column="9" bodyfile="src/kernel/sys/sem.c" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsemaphore_1acb86e68f82d643d35552f197ee6e4d9f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structprocess" kindref="compound">process</ref> *</type>
+        <definition>struct process* waiting_queue</definition>
+        <argsstring></argsstring>
+        <name>waiting_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/sys/sem.c" line="11" column="18" bodyfile="src/kernel/sys/sem.c" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsemaphore_1afbc6d65ee8f9505cc088886c5df8dfde" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int valide</definition>
+        <argsstring></argsstring>
+        <name>valide</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/kernel/sys/sem.c" line="12" column="9" bodyfile="src/kernel/sys/sem.c" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>inode</label>
+        <link refid="structinode"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>free_next</edgelabel>
+          <edgelabel>hash_next</edgelabel>
+          <edgelabel>hash_prev</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>sb</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>process</label>
+        <link refid="structprocess"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>pwd</edgelabel>
+          <edgelabel>root</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>fss</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+          <edgelabel>father</edgelabel>
+          <edgelabel>next</edgelabel>
+          <edgelabel>nextInSem</edgelabel>
+          <edgelabel>pgrp</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>semaphore</label>
+        <childnode refid="2" relation="usage">
+          <edgelabel>waiting_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>fpu</label>
+        <link refid="structfpu"/>
+      </node>
+      <node id="5">
+        <label>buffer</label>
+        <link refid="structbuffer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>free_next</edgelabel>
+          <edgelabel>free_prev</edgelabel>
+          <edgelabel>hash_next</edgelabel>
+          <edgelabel>hash_prev</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>superblock</label>
+        <link refid="structsuperblock"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>mp</edgelabel>
+          <edgelabel>root</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>chain</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>buf</edgelabel>
+          <edgelabel>imap</edgelabel>
+          <edgelabel>zmap</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/kernel/sys/sem.c" line="7" column="1" bodyfile="src/kernel/sys/sem.c" bodystart="8" bodyend="13"/>
+    <listofallmembers>
+      <member refid="structsemaphore_1a35af0be900467fedbb610bd6ea65ed78" prot="public" virt="non-virtual"><scope>semaphore</scope><name>key</name></member>
+      <member refid="structsemaphore_1afbc6d65ee8f9505cc088886c5df8dfde" prot="public" virt="non-virtual"><scope>semaphore</scope><name>valide</name></member>
+      <member refid="structsemaphore_1ac4f474c82e82cbb89ca7c36dd52be0ed" prot="public" virt="non-virtual"><scope>semaphore</scope><name>value</name></member>
+      <member refid="structsemaphore_1acb86e68f82d643d35552f197ee6e4d9f" prot="public" virt="non-virtual"><scope>semaphore</scope><name>waiting_queue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

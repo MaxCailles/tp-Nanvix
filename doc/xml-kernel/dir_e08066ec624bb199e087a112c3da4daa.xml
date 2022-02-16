@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_e08066ec624bb199e087a112c3da4daa" kind="dir">
+    <compoundname>src/lib/libc/stdio</compoundname>
+    <innerfile refid="src_2lib_2libc_2stdio_2fclose_8c">fclose.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2fflush_8c">fflush.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2fgets_8c">fgets.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2flags_8c">flags.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2fopen_8c">fopen.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2fprintf_8c">fprintf.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2fputc_8c">fputc.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2fputs_8c">fputs.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2freopen_8c">freopen.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2getc_8c">getc.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2gets_8c">gets.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2printf_8c">printf.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2putc_8c">putc.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2puts_8c">puts.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2setvbuf_8c">setvbuf.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2stdio_8c">stdio.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2stdio_8h">stdio.h</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2vfprintf_8c">vfprintf.c</innerfile>
+    <innerfile refid="src_2lib_2libc_2stdio_2vsprintf_8c">vsprintf.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/lib/libc/stdio/"/>
+  </compounddef>
+</doxygen>
