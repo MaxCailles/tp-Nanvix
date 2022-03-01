@@ -446,18 +446,21 @@ int semaphore_test3(void)
 	SEM_CREATE(empty, 2);
 	SEM_CREATE(full, 3);
 
-
+	printf("Init Semaphores\n");
 	/* Initialize semaphores. */
 	SEM_INIT(full, 0);
 	SEM_INIT(empty, BUFFER_SIZE);
 	SEM_INIT(mutex, 1);
-	
+	printf("Init Semaphores Done\n");
+
 	if ((pid = fork()) < 0)
 		return (-1);
+	
 	
 	/* Producer. */
 	else if (pid == 0)
 	{
+		printf("Producer lance\n");
 		for (int item = 0; item < NR_ITEMS; item++)
 		{
 			SEM_DOWN(empty);
@@ -467,18 +470,19 @@ int semaphore_test3(void)
 				
 			SEM_UP(mutex);
 			SEM_UP(full);
+			
 		}
 
 		_exit(EXIT_SUCCESS);
 	}
-	
 	/* Consumer. */
 	else
-	{
+	{	
+		printf("Consumer lance\n");
 		int item;
-		
 		do
 		{
+			printf("Consumer lance\n");
 			SEM_DOWN(full);
 			SEM_DOWN(mutex);
 			
@@ -488,14 +492,18 @@ int semaphore_test3(void)
 			SEM_UP(empty);
 		} while (item != (NR_ITEMS - 1));
 	}
-					
+
+	printf("Producer/Consumer est fini \n");
 	/* Destroy semaphores. */
 	SEM_DESTROY(mutex);
 	SEM_DESTROY(empty);
 	SEM_DESTROY(full);
-	
+	printf("Destruction des semaphores reussies");
+
 	close(buffer_fd);
 	unlink("buffer");
+
+
 	
 	return (0);
 }

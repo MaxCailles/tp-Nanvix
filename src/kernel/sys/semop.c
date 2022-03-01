@@ -8,7 +8,7 @@ PUBLIC int sys_semop(int semid, int op)
         return -1;
     }
     
-    if (isvalid(semid)){
+    if (!isvalid(semid)){
         return -1;
     }
 
@@ -17,6 +17,7 @@ PUBLIC int sys_semop(int semid, int op)
     {
     case 1:
         up(semid);
+      
         break;
 
     case -1:

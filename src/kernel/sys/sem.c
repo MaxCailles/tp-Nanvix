@@ -4,12 +4,13 @@
 #include <nanvix/klib.h>
 #include <nanvix/syscall.h>
 
+
 /* semaphore  definition*/
 typedef struct
 {
     int key;                  // Key linked
     int value;                     // value to increment or decrement
-    struct process *waiting_queue; // waiting list of blocked process by this semaphore
+    struct process **waiting_queue; // waiting list of blocked process by this semaphore
     int valide;
 } semaphore;
 
@@ -78,19 +79,16 @@ int isvalid(int semid)
 
 int up(int idSem)
 {
-
     if (semaphores[idSem].value == 0)
     {
         if (semaphores[idSem].waiting_queue != NULL)
         {
-            struct process p = *(semaphores[idSem].waiting_queue);
-            semaphores[idSem].waiting_queue = p.nextInSem;
+            wakeup(semaphores[idSem].waiting_queue);
         }
+        
     }
-    else
-    {
-        semaphores[idSem].value++;
-    }
+    semaphores[idSem].value++; 
+
     return 0;
 }
 
@@ -102,11 +100,13 @@ int down(int idSem)
     }
     else
     {
-        struct process *old_head = semaphores[idSem].waiting_queue;
-        semaphores[idSem].waiting_queue = curr_proc;
-        curr_proc->nextInSem = old_head;
+        while(semaphores[idSem].value < 0){
+            sleep(semaphores[idSem].waiting_queue,curr_proc->priority);
+        }
+        
     }
     return 0;
+
 }
 
 int destroy(int idSem)
