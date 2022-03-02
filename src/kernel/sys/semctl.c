@@ -18,6 +18,7 @@ PUBLIC int sys_semctl(int semid, int cmd, int val){
     
     switch(cmd){
         case GETVAL : 
+            getval(semid);
         break;
 
         case SETVAL :  

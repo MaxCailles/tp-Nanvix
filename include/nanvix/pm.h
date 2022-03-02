@@ -291,6 +291,8 @@
 
 ////////// Partie SEMAPHORES /////////
 
+#define NB_SEM_MAX 2 * PROC_MAX // At least 2 semaphores per proc
+
 /* semaphore  definition*/
 typedef struct
 {
@@ -302,7 +304,7 @@ typedef struct
 
 
 
-#define NB_SEM_MAX 2 * PROC_MAX // At least 2 semaphores per proc
+/* semaphore's functions */ 
 
 EXTERN void initSempaphores();
 EXTERN int create(int key);

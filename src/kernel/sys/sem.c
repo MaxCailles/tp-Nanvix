@@ -53,7 +53,7 @@ int create(int key)
     /* return the indice in the table */ 
     int ret = indic_min;
 
-    /* process the new free place in the array */
+    /* compute the new free place in the array */
     int i = 0;
     int found = 0;
     while((i<NB_SEM_MAX) && (found==0) )

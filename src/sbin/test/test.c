@@ -448,16 +448,16 @@ int semaphore_test3(void)
 
 
 	/* Existing semaphore test */
-	if (semget(2) ==  1){
-		printf("Le semaphore empty 2 existe deja\n");
-	}
+	assert(semget(2) ==  1);
 
-	printf("Init Semaphores\n");
 	/* Initialize semaphores. */
 	SEM_INIT(full, 0);
 	SEM_INIT(empty, BUFFER_SIZE);
 	SEM_INIT(mutex, 1);
 	printf("Init Semaphores Done\n");
+
+	/* semctl getval function test */
+	assert(semctl(1,GETVAL,0)==0);
 
 	if ((pid = fork()) < 0)
 		return (-1);
@@ -506,12 +506,7 @@ int semaphore_test3(void)
 	
 	/* Create a semaphore in a hole of the array */
 	SEM_CREATE(empty, 2); 
-	if (semget(2) ==  1){
-		printf("Le semaphore empty 2 a bien ete enregistrer ou il faut\n");
-	}
-	else {
-		printf("Le semaphore empty 2 n'a pas bien ete enregistrer ou il faut\n");
-	}
+	assert(semget(2) ==  1);
 
 	/* Destroy semaphores. */
 	SEM_DESTROY(mutex);
