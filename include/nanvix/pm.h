@@ -289,6 +289,32 @@
 	EXTERN unsigned nprocs;
 
 
+////////// Partie SEMAPHORES /////////
+
+/* semaphore  definition*/
+typedef struct
+{
+	int key;					   // Key linked
+	int value;					   // value to increment or decrement
+	struct process *waiting_queue; // waiting list of blocked process by this semaphore
+	int valide;
+} semaphore;
+
+
+
+#define NB_SEM_MAX 2 * PROC_MAX // At least 2 semaphores per proc
+
+EXTERN void initSempaphores();
+EXTERN int create(int key);
+EXTERN int up(int idSem);
+EXTERN int down(int idSem);
+EXTERN int destroy(int idSem);
+EXTERN void setval(int idSem, int val);
+EXTERN int getval(int idSem);
+EXTERN int isvalid(int semid);
+
+
+
 #endif /* _ASM_FILE */
 
 #endif /* NANVIX_PM_H_ */

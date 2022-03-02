@@ -1,6 +1,6 @@
 /* Implémentation de l'abstraction sémaphore sem.h */
 
-#include <sys/sem.h>
+#include <nanvix/pm.h>
 #include <nanvix/klib.h>
 #include <nanvix/syscall.h>
 
