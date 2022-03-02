@@ -289,20 +289,6 @@
 	EXTERN unsigned nprocs;
 
 
-	////////// SEMAPHORES //////////
-
-	#define NB_SEM_MAX 2 * PROC_MAX  // At least 2 semaphores per proc
-	
-	EXTERN void initSempaphores();
-	EXTERN int create(int key);
-	EXTERN int up(int idSem);
-	EXTERN int down(int idSem);
-	EXTERN int destroy(int idSem);
-	EXTERN void setval(int idSem, int val);
-	EXTERN int getval(int idSem);
-	EXTERN int isvalid(int semid);
-
-
 #endif /* _ASM_FILE */
 
 #endif /* NANVIX_PM_H_ */

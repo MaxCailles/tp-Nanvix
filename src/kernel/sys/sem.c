@@ -1,21 +1,12 @@
 /* Implémentation de l'abstraction sémaphore sem.h */
 
-#include <nanvix/pm.h>
+#include <sys/sem.h>
 #include <nanvix/klib.h>
 #include <nanvix/syscall.h>
 
 
-/* semaphore  definition*/
-typedef struct
-{
-    int key;                  // Key linked
-    int value;                     // value to increment or decrement
-    struct process *waiting_queue; // waiting list of blocked process by this semaphore
-    int valide;
-} semaphore;
-
-static semaphore semaphores[NB_SEM_MAX]; // Array of all semaphores in use.
-static int nbSem = 0;
+semaphore semaphores[NB_SEM_MAX]; // Array of all semaphores in use.
+int nbSem = 0;
 
 void initSempaphores()
 {
