@@ -432,8 +432,8 @@ int semaphore_test3(void)
 	int empty;                  /* Empty positions.         */
 	int full;                   /* Full positions.          */
 	int mutex;                  /* Mutex.                   */
-	const int BUFFER_SIZE = 2; /* Buffer size.             */
-	const int NR_ITEMS = 5;   /* Number of items to send. */
+	const int BUFFER_SIZE = 32; /* Buffer size.             */
+	const int NR_ITEMS = 512;   /* Number of items to send. */
 
 	/* Create buffer.*/
 	buffer_fd = open("buffer", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
@@ -445,6 +445,12 @@ int semaphore_test3(void)
 	SEM_CREATE(mutex, 1);
 	SEM_CREATE(empty, 2);
 	SEM_CREATE(full, 3);
+
+
+	/* Existing semaphore test */
+	if (semget(2) ==  1){
+		printf("Le semaphore empty 2 existe deja\n");
+	}
 
 	printf("Init Semaphores\n");
 	/* Initialize semaphores. */
@@ -495,6 +501,18 @@ int semaphore_test3(void)
 
 	printf("Producer/Consumer est fini \n");
 	
+	
+	SEM_DESTROY(empty);
+	
+	/* Create a semaphore in a hole of the array */
+	SEM_CREATE(empty, 2); 
+	if (semget(2) ==  1){
+		printf("Le semaphore empty 2 a bien ete enregistrer ou il faut\n");
+	}
+	else {
+		printf("Le semaphore empty 2 n'a pas bien ete enregistrer ou il faut\n");
+	}
+
 	/* Destroy semaphores. */
 	SEM_DESTROY(mutex);
 	SEM_DESTROY(empty);

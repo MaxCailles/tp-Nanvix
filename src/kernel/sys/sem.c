@@ -113,7 +113,9 @@ int down(int idSem)
 int destroy(int idSem)
 {
     semaphores[idSem].valide = 0;
-    indic_min = idSem;
+    if(idSem < indic_min){
+        indic_min = idSem;
+    }
     nbSem--;
     return 0;
 }
