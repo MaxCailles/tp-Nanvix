@@ -223,6 +223,7 @@
 
     EXTERN void sndsig(struct process *, int);
 	EXTERN void wakeup(struct process **);
+	EXTERN void wakeuponeprocess(struct process **);
 	EXTERN void yield(void);
 	
 	/**
@@ -300,6 +301,7 @@
 	EXTERN void setval(int idSem, int val);
 	EXTERN int getval(int idSem);
 	EXTERN int isvalid(int semid);
+
 
 #endif /* _ASM_FILE */
 

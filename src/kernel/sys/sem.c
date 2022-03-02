@@ -10,7 +10,7 @@ typedef struct
 {
     int key;                  // Key linked
     int value;                     // value to increment or decrement
-    struct process **waiting_queue; // waiting list of blocked process by this semaphore
+    struct process *waiting_queue; // waiting list of blocked process by this semaphore
     int valide;
 } semaphore;
 
@@ -79,32 +79,27 @@ int isvalid(int semid)
 
 int up(int idSem)
 {
-    if (semaphores[idSem].value == 0)
-    {
-        if (semaphores[idSem].waiting_queue != NULL)
-        {
-            wakeup(semaphores[idSem].waiting_queue);
-        }
-        
-    }
-    semaphores[idSem].value++; 
+    disable_interrupts();
+    semaphores[idSem].value++;
 
+    if (semaphores[idSem].value <= 0)
+    {
+        wakeuponeprocess(&(semaphores[idSem].waiting_queue));
+    }
+    enable_interrupts();
     return 0;
 }
 
 int down(int idSem)
-{
-    if (semaphores[idSem].value > 0)
+{ 
+    disable_interrupts();
+    semaphores[idSem].value--;
+    if (semaphores[idSem].value < 0)
     {
-        semaphores[idSem].value--;
-    }
-    else
-    {
-        while(semaphores[idSem].value < 0){
-            sleep(semaphores[idSem].waiting_queue,curr_proc->priority);
-        }
+        sleep(&(semaphores[idSem].waiting_queue),curr_proc->priority);
         
     }
+    enable_interrupts();
     return 0;
 
 }

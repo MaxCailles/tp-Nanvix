@@ -413,7 +413,7 @@ static int sched_test3(void)
  */
 #define GET_ITEM(a, b)                               \
 {                                                    \
-	assert(lseek((a), 0, SEEK_SET) != -1);           \
+	assert(lseek((a), 0, SEEK_SET) != -1); 			 \
 	assert(read((a), &(b), sizeof(b)) == sizeof(b)); \
 }                                                    \
 
@@ -432,8 +432,8 @@ int semaphore_test3(void)
 	int empty;                  /* Empty positions.         */
 	int full;                   /* Full positions.          */
 	int mutex;                  /* Mutex.                   */
-	const int BUFFER_SIZE = 32; /* Buffer size.             */
-	const int NR_ITEMS = 512;   /* Number of items to send. */
+	const int BUFFER_SIZE = 2; /* Buffer size.             */
+	const int NR_ITEMS = 5;   /* Number of items to send. */
 
 	/* Create buffer.*/
 	buffer_fd = open("buffer", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
@@ -482,7 +482,7 @@ int semaphore_test3(void)
 		int item;
 		do
 		{
-			printf("Consumer lance\n");
+			
 			SEM_DOWN(full);
 			SEM_DOWN(mutex);
 			
@@ -494,16 +494,15 @@ int semaphore_test3(void)
 	}
 
 	printf("Producer/Consumer est fini \n");
+	
 	/* Destroy semaphores. */
 	SEM_DESTROY(mutex);
 	SEM_DESTROY(empty);
 	SEM_DESTROY(full);
-	printf("Destruction des semaphores reussies");
+	printf("Destruction des semaphores reussies\n");
 
 	close(buffer_fd);
 	unlink("buffer");
-
-
 	
 	return (0);
 }
