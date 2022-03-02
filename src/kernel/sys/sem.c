@@ -7,6 +7,7 @@
 
 semaphore semaphores[NB_SEM_MAX]; // Array of all semaphores in use.
 int nbSem = 0;
+int indic_min = 0;
 
 void initSempaphores()
 {
@@ -34,6 +35,8 @@ int create(int key)
         }
     }
 
+    /* Not Found so we ha ve to create a new one*/
+
     /* Check if there is enough place */
     if (nbSem >= NB_SEM_MAX)
     {
@@ -42,13 +45,25 @@ int create(int key)
 
     /* create a new semaphore and save it in the array*/
 
-    semaphores[nbSem].key = key;
-    semaphores[nbSem].valide = 1;
-    semaphores[nbSem].value = 0;
-    semaphores[nbSem].waiting_queue = NULL;
+    semaphores[indic_min].key = key;
+    semaphores[indic_min].valide = 1;
+    semaphores[indic_min].value = 0;
+    semaphores[indic_min].waiting_queue = NULL;
 
     /* return the indice in the table */ 
-    int ret = nbSem;
+    int ret = indic_min;
+
+    /* process the new free place in the array */
+    int i = 0;
+    int found = 0;
+    while((i<NB_SEM_MAX) && (found==0) )
+    {   if (semaphores[i].valide == 0){
+        indic_min = i;
+        found=1;
+        }
+        i++;
+    }
+
     nbSem++;
     return ret;
 }
@@ -98,5 +113,7 @@ int down(int idSem)
 int destroy(int idSem)
 {
     semaphores[idSem].valide = 0;
+    indic_min = idSem;
+    nbSem--;
     return 0;
 }
