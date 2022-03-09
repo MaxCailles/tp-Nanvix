@@ -21,7 +21,8 @@
 # Change this to zero if you wanna a
 # non-educational version of the system.
 #
-export EDUCATIONAL_KERNEL=1
+
+export EDUCATIONAL_KERNEL= 1
 
 # Directories.
 export BINDIR   = $(CURDIR)/bin
@@ -40,7 +41,7 @@ export LD = $(TARGET)-ld
 export AR = $(TARGET)-ar
 
 # Random number for chaos.
-export KEY = 13
+export KEY = 0
 
 # Toolchain configuration.
 export CFLAGS    = -g -I $(INCDIR)

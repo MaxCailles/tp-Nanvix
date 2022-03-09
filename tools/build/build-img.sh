@@ -102,6 +102,12 @@ function passwords
 		chmod 600 $file
 	fi
 
+	# Let's care about security...
+	if [ "$EDUCATIONAL_KERNEL" == "1" ]; then
+		chmod 777 $file  # A changer parce que là ça craint un peu. 
+	fi
+	
+
 	bin/cp.minix $1 $file /etc/$file $ROOTUID $ROOTGID
 
 	# House keeping.

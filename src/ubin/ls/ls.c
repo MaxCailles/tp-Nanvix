@@ -121,8 +121,9 @@ static void getargs(int argc, char *const argv[])
 	char *arg; /* Working argument. */
 	
 	/* Get program arguments. */
+	/* A rajouter un -l pour afficher chmod */ 
 	for (i = 1; i < argc; i++)
-	{
+	{						
 		arg = argv[i];
 		
 		/* Print entries starting with dot. */
