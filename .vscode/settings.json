@@ -1,6 +1,13 @@
 {
     "files.associations": {
         "pm.h": "c",
-        "sem.h": "c"
+        "sem.h": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "fstream": "c",
+        "sstream": "c",
+        "fs.h": "c",
+        "errno.h": "c",
+        "fcntl.h": "c"
     }
 }
