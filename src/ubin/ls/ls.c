@@ -23,6 +23,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "sys/access.h"
+
 
 /* Software versioning. */
 #define VERSION_MAJOR 1 /* Major version. */
@@ -31,6 +33,7 @@
 /* Program flags. */
 #define LS_ALL   001     /* Print entries starting with dot? */
 #define LS_INODE 002     /* Print inode numbers.             */
+#define LS_PERM  004     /* Print permissions                */
 static int ls_flags = 0; /* Flags.                           */
 
 /* Name of the directory to list. */
@@ -68,7 +71,16 @@ int ls(const char *pathname)
 		if (ls_flags & LS_INODE)
 			printf("%d ", (int)dp->d_ino);
 		
+		/* Print permissions */
+		if(ls_flags & LS_PERM){
+			/* Créer un autre fichier qui va faire l'appel system*/
+			int j = access(dp->d_name,7);
+			printf("--- %d --- ",j);
+		}	
+
 		printf("%s\n", filename);
+		
+		
 	}
 	closedir(dirp);
 	
@@ -106,6 +118,7 @@ static void usage(void)
 	printf("Options:\n");
 	printf("  -a, --all     List all entries\n");
 	printf("  -i, --inode   Print the inode number of each file\n");
+	printf("  -l, --perm   Print the persmissions of each file\n");
 	printf("      --help    Display this information and exit\n");
 	printf("      --version Display program version and exit\n");
 	
@@ -133,6 +146,10 @@ static void getargs(int argc, char *const argv[])
 		/* Print inode numbers. */
 		else if ((!strcmp(arg, "-i")) || (!strcmp(arg, "--inode")))
 			ls_flags |= LS_INODE;
+
+		/* Print inode numbers. */
+		else if ((!strcmp(arg, "-l")) || (!strcmp(arg, "--perm")))
+			ls_flags |= LS_PERM;
 		
 		/* Display help information. */
 		else if (!strcmp(arg, "--help"))
