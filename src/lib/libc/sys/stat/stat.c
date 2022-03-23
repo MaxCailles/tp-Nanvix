@@ -20,12 +20,15 @@
 #include <nanvix/syscall.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <unistd.h>
+#include <stdio.h>
 
 /*
  * Gets file status.
  */
 int stat(const char *path, struct stat *buf)
 {
+	printf("Call stat from /src//lib");
 	int ret;
 	
 	__asm__ volatile (
@@ -42,6 +45,10 @@ int stat(const char *path, struct stat *buf)
 		errno = -ret;
 		return (-1);
 	}
+
+	uid_t user_id = 0 ;
+	user_id = geteuid();
+	printf("actual user id : %d", user_id);
 	
 	return (ret);
 }

@@ -23,6 +23,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <nanvix/fs.h>
+#include <sys/types.h>
+#include <nanvix/pm.h>
+#include <unistd.h>
 
 /* Software versioning. */
 #define VERSION_MAJOR 1 /* Major version. */
@@ -93,7 +97,7 @@ static void readargs(int argc, char *const argv[])
 	/* Wrong usage. */
 	if (filename == NULL)
 	{
-		printf("stat: missing operand\n");
+		printf("stat: missing operand Please Type A FileName \n");
 		usage();
 	}
 }
@@ -143,6 +147,9 @@ int main(int argc, char *const argv[])
 	struct stat st;
 	
 	readargs(argc, argv);
+
+
+	//uid_t user_id = 0 ;
 	
 	/* Get file status. */
 	if (stat(filename, &st) < 0)
@@ -150,6 +157,11 @@ int main(int argc, char *const argv[])
 		printf("stat: cannot stat()\n");
 		return (errno);
 	}
+
+	//printf( "User file name : %s", getname(filename) );
+
+	//user_id = geteuid();
+	//printf("actual user id");
 	
 	/* Print file status. */
 	printf("    Name: %s\n", filename);

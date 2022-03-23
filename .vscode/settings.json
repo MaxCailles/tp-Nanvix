@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "pm.h": "c",
-        "sem.h": "c"
+        "sem.h": "c",
+        "types.h": "c",
+        "utsname.h": "c",
+        "syscall.h": "c",
+        "stdio.h": "c",
+        "unistd.h": "c"
     }
 }

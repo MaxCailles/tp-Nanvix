@@ -47,6 +47,8 @@ static void cat(char *filename)
 	
 	fd = open(filename, O_RDONLY);
 	
+	printf("Permission Denied");
+
 	/* Failed to open file. */
 	if (fd < 0)
 	{
@@ -67,7 +69,7 @@ static void cat(char *filename)
 		do
 		{
 			nwritten = write(fileno(stdout), &buf[off], nread);
-			
+			printf("Apres  write");
 			/* Failed to write. */
 			if (nwritten < 0)
 			{

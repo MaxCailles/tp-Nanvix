@@ -29,7 +29,7 @@
 #include <nanvix/config.h>
 #include <dev/tty.h>
 
-#if (MULTIUSER == 1)
+#if (MULTIUSER >= 1)
 
 /**
  * @brief Authenticates a user in the system.
@@ -131,9 +131,9 @@ int main(int argc, char *const argv[])
 		return (EXIT_FAILURE);
 	}
 	
-	printf("%s %s on %s\n\n", name.sysname, name.version, name.nodename);
+	printf("System Information : %s %s on %s\n\n", name.sysname, name.version, name.nodename);
 
-#if (MULTIUSER == 1)
+#if (MULTIUSER >= 1)
 	
 	while (!login())
 		/* noop */;
@@ -141,7 +141,7 @@ int main(int argc, char *const argv[])
 #endif
 
 	ioctl(fileno(stdout), TTY_CLEAR);
-	
+	printf("Login Success!!!\n\n");
 	printf("Nanvix - A Free Educational Operating System\n\n");
 	printf("The programs included with Nanvix system are free software\n");
 	printf("under the GNU General Public License Version 3.\n\n");
