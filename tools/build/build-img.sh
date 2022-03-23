@@ -33,6 +33,10 @@ ROOTGID=0
 NOOBUID=1
 NOOBUID=1
 
+# User credentials.
+JAMYUID=2
+JAMYUID=2
+
 # macOS compatibility stuff
 if [ "x$(uname -rv | grep Darwin)" != "x" ];
 then
@@ -96,6 +100,7 @@ function passwords
 
 	bin/useradd $file root root $ROOTGID $ROOTUID
 	bin/useradd $file noob noob $NOOBUID $NOOBUID
+	bin/useradd $file jamy jamy $JAMYUID $JAMYUID
 
 	# Let's care about security...
 	if [ "$EDUCATIONAL_KERNEL" == "0" ]; then
@@ -104,7 +109,7 @@ function passwords
 
 	# Let's care about security...
 	if [ "$EDUCATIONAL_KERNEL" == "1" ]; then
-		chmod 777 $file  # A changer parce que là ça craint un peu. 
+		chmod 1600 $file  
 	fi
 	
 

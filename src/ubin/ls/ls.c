@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sys/access.h"
+
 
 
 /* Software versioning. */
@@ -71,12 +71,13 @@ int ls(const char *pathname)
 		if (ls_flags & LS_INODE)
 			printf("%d ", (int)dp->d_ino);
 		
-		/* Print permissions */
+		/* Print permissions 
 		if(ls_flags & LS_PERM){
-			/* Créer un autre fichier qui va faire l'appel system*/
+			 //Créer un autre fichier qui va faire l'appel system 
 			int j = access(dp->d_name,7);
-			printf("--- %d --- ",j);
-		}	
+			printf("--- %d --- ",j); 
+		}
+		*/
 
 		printf("%s\n", filename);
 		

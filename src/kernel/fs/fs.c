@@ -110,13 +110,15 @@ PUBLIC void do_close(int fd)
  * Checks rwx permissions on a file.
  */
 PUBLIC mode_t permission(mode_t mode, uid_t uid, gid_t gid, struct process *proc, mode_t mask, int oreal)
-{
+{	
+	kprintf("uid : %d, proc uid : %d, proc euid : %d , !oreal && procuid : %d ",uid,proc->uid,proc->euid,(!oreal && proc->euid));
+	
 	mode &= mask;
 	
 	/* Super user. */
 	if (IS_SUPERUSER(proc))
 		mode &= S_IRWXU | S_IRWXG | S_IRWXO;
-	
+
 	/* Owner user. */
 	else if ((proc->uid == uid) || ((!oreal && proc->euid == uid)))
 		mode &= S_IRWXU | S_IRWXG | S_IRWXO;
@@ -128,7 +130,7 @@ PUBLIC mode_t permission(mode_t mode, uid_t uid, gid_t gid, struct process *proc
 	/* Other user. */
 	else
 		mode &= S_IRWXO;
-	
+
 	return (mode);
 }
 
