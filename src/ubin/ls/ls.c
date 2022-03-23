@@ -50,7 +50,7 @@ static char *dirname = NULL;
 static char *fileacc(mode_t mode)
 {
 	static char acess[10] = "---------";
-	
+		
 	acess[0] = (mode & S_IROTH) ? 'r' : '-';
 	acess[1] = (mode & S_IWOTH) ? 'w' : '-';
 	acess[2] = (mode & S_IXOTH) ? 'x' : '-';
@@ -156,11 +156,7 @@ static void usage(void)
 	printf("Options:\n");
 	printf("  -a, --all     List all entries\n");
 	printf("  -i, --inode   Print the inode number of each file\n");
-<<<<<<< HEAD
-	printf("  -l, --perm   Print the persmissions of each file\n");
-=======
 	printf("  -l            Display permissions\n");
->>>>>>> origin/Securite_Lucas
 	printf("      --help    Display this information and exit\n");
 	printf("      --version Display program version and exit\n");
 
@@ -189,16 +185,9 @@ static void getargs(int argc, char *const argv[])
 		else if ((!strcmp(arg, "-i")) || (!strcmp(arg, "--inode")))
 			ls_flags |= LS_INODE;
 
-<<<<<<< HEAD
-		/* Print inode numbers. */
-		else if ((!strcmp(arg, "-l")) || (!strcmp(arg, "--perm")))
-			ls_flags |= LS_PERM;
-		
-=======
 		else if ((!strcmp(arg, "-l")))
 			ls_flags |= LS_L;
 
->>>>>>> origin/Securite_Lucas
 		/* Display help information. */
 		else if (!strcmp(arg, "--help"))
 			usage();
