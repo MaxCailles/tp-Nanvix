@@ -24,7 +24,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
-#include <nanvix/fs.h>
+#include <sys/stat.h>
+#include <nanvix/syscall.h>
 
 /* Software versioning. */
 #define VERSION_MAJOR 1 /* Major version. */
@@ -46,27 +47,37 @@ int ls(const char *pathname)
 	DIR *dirp;					 /* Directory.               */
 	struct dirent *dp;			 /* Working directory entry. */
 	char filename[NAME_MAX + 1]; /* Working file name.       */
-	const char *name;
+	struct stat* i = malloc(sizeof (struct stat));
+	int ret;
+
+	__asm__ volatile (
+		"int $0x80"
+		: "=a" (ret)
+		: "0" (NR_stat),
+		  "b" (pathname),
+		  "c" (i)
+	);
+
+	if (ret < 0)
+	{
+		errno = -ret;
+		free(i);
+		return (-1);
+	}
 
 	/* Not a directory */
-	if (inode_dname(pathname, &name) == NULL)
+	if (!S_ISDIR(i->st_mode))
 	{
-		if ((open(pathname, O_RDONLY)) < 0)
-		{
-			fprintf(stderr, "ls: cannot open %s\n", pathname);
-			return (errno);
-		}
-		errno = 0;
 		/* Display file name */
 		printf("%s\n", pathname);
 	}
 	else
 	{
-
 		/* Open directory. */
 		if ((dirp = opendir(pathname)) == NULL)
 		{
 			fprintf(stderr, "ls: cannot open %s\n", pathname);
+			free(i);
 			return (errno);
 		}
 		errno = 0;
@@ -92,9 +103,11 @@ int ls(const char *pathname)
 		if (errno != 0)
 		{
 			fprintf(stderr, "ls: cannot read %s\n", pathname);
+			free(i);
 			return (errno);
 		}
 	}
+	free(i);
 	return (EXIT_SUCCESS);
 }
 
