@@ -50,7 +50,7 @@ static char *dirname = NULL;
 static char *fileacc(mode_t mode)
 {
 	static char acess[10] = "---------";
-		
+
 	acess[0] = (mode & S_IROTH) ? 'r' : '-';
 	acess[1] = (mode & S_IWOTH) ? 'w' : '-';
 	acess[2] = (mode & S_IXOTH) ? 'x' : '-';
@@ -115,8 +115,10 @@ int ls(const char *pathname)
                 printf("%d ", (int)dp->d_ino);
 
             /* Print permissions. */
-            if (ls_flags & LS_L)
+            if (ls_flags & LS_L){
+				stat(filename, &i);
                 printf("%s ",fileacc(i.st_mode));
+			}
 
             printf("%s\n", filename);
         }

@@ -111,7 +111,7 @@ PUBLIC void do_close(int fd)
  */
 PUBLIC mode_t permission(mode_t mode, uid_t uid, gid_t gid, struct process *proc, mode_t mask, int oreal)
 {	
-	kprintf("uid : %d, proc uid : %d, proc euid : %d , !oreal && procuid : %d ",uid,proc->uid,proc->euid,(!oreal && proc->euid));
+	//kprintf("uid : %d, proc uid : %d, proc euid : %d , !oreal && procuid : %d ",uid,proc->uid,proc->euid,(!oreal && proc->euid));
 	
 	mode &= mask;
 	
