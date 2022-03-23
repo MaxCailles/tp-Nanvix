@@ -34,10 +34,35 @@
 /* Program flags. */
 #define LS_ALL 001		 /* Print entries starting with dot? */
 #define LS_INODE 002	 /* Print inode numbers.             */
+#define LS_L 004		 /* Print permissions				 */
 static int ls_flags = 0; /* Flags.                           */
 
 /* Name of the directory to list. */
 static char *dirname = NULL;
+
+
+/*
+ * Returns file access string.
+ * this function is similar to the one from stat.c
+ */
+static char *fileacc(mode_t mode)
+{
+	static char acess[10] = "---------";
+	
+	acess[0] = (mode & S_IROTH) ? 'r' : '-';
+	acess[1] = (mode & S_IWOTH) ? 'w' : '-';
+	acess[2] = (mode & S_IXOTH) ? 'x' : '-';
+	acess[3] = (mode & S_IRGRP) ? 'r' : '-';
+	acess[4] = (mode & S_IWGRP) ? 'w' : '-';
+	acess[5] = (mode & S_IXGRP) ? 'x' : '-';
+	acess[6] = (mode & S_IRUSR) ? 'r' : '-';
+	acess[7] = (mode & S_IWUSR) ? 'w' : '-';
+	acess[8] = (mode & S_IXUSR) ? 'x' : '-';
+	
+	return (acess);
+}
+
+
 
 /*
  * Lists contents of a directory.
@@ -49,9 +74,7 @@ int ls(const char *pathname)
 	char filename[NAME_MAX + 1]; /* Working file name.       */
 	struct stat i;
 
-	
-
-	if (stat(pathname,&i) < 0)
+	if (stat(pathname, &i) < 0)
 	{
 		return (errno);
 	}
@@ -59,6 +82,10 @@ int ls(const char *pathname)
 	/* Not a directory */
 	if (!S_ISDIR(i.st_mode))
 	{
+		/* Print permissions. */
+		if (ls_flags & LS_L)
+			printf("%s ",fileacc(i.st_mode));
+
 		/* Display file name */
 		printf("%s\n", pathname);
 	}
@@ -84,6 +111,10 @@ int ls(const char *pathname)
 			/* Print inode number. */
 			if (ls_flags & LS_INODE)
 				printf("%d ", (int)dp->d_ino);
+
+			/* Print permissions. */
+			if (ls_flags & LS_L)
+				printf("%s ",fileacc(i.st_mode));
 
 			printf("%s\n", filename);
 		}
@@ -123,6 +154,7 @@ static void usage(void)
 	printf("Options:\n");
 	printf("  -a, --all     List all entries\n");
 	printf("  -i, --inode   Print the inode number of each file\n");
+	printf("  -l            Display permissions\n");
 	printf("      --help    Display this information and exit\n");
 	printf("      --version Display program version and exit\n");
 
@@ -149,6 +181,9 @@ static void getargs(int argc, char *const argv[])
 		/* Print inode numbers. */
 		else if ((!strcmp(arg, "-i")) || (!strcmp(arg, "--inode")))
 			ls_flags |= LS_INODE;
+
+		else if ((!strcmp(arg, "-l")))
+			ls_flags |= LS_L;
 
 		/* Display help information. */
 		else if (!strcmp(arg, "--help"))

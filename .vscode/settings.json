@@ -9,6 +9,8 @@
         "fs.h": "c",
         "errno.h": "c",
         "fcntl.h": "c",
-        "syscall.h": "c"
+        "syscall.h": "c",
+        "stat.h": "c",
+        "types.h": "c"
     }
 }
