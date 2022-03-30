@@ -57,15 +57,14 @@ static int change(const char* name, const char* password){
 	{
 		account_decrypt(a.name, USERNAME_MAX, KERNEL_HASH);
 	
-
 		/* No this user. */
 		if (strcmp(name, a.name))
 			continue;
 		
 		/* Found. */
         lseek(file,(- sizeof(struct account) + USERNAME_MAX),SEEK_CUR);
-		write(file,password,PASSWORD_MAX);
         account_encrypt(a.password, PASSWORD_MAX, KERNEL_HASH);
+		write(file,password,PASSWORD_MAX);
         goto found;
         
 	}
@@ -139,7 +138,7 @@ static void getargs(int argc, char *const argv[])
  * 
  * @returns One if successful change and false otherwise.
  */
-static int do_passwd(void)
+int do_passwd(void)
 {
 	
     char name[USERNAME_MAX];

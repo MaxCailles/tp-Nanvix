@@ -31,11 +31,11 @@ ROOTGID=0
 
 # User credentials.
 NOOBUID=1
-NOOBUID=1
+NOOBGID=1
 
 # User credentials.
-JAMYUID=2
-JAMYUID=2
+MAXIMEUID=2
+MAXIMEGID=2
 
 # macOS compatibility stuff
 if [ "x$(uname -rv | grep Darwin)" != "x" ];
@@ -99,8 +99,8 @@ function passwords
 	file="passwords"
 
 	bin/useradd $file root root $ROOTGID $ROOTUID
-	bin/useradd $file noob noob $NOOBUID $NOOBUID
-	bin/useradd $file jamy jamy $JAMYUID $JAMYUID
+	bin/useradd $file noob noob $NOOBGID $NOOBUID
+	bin/useradd $file maxime cailles $MAXIMEGID $MAXIMEUID
 
 	# Let's care about security...
 	if [ "$EDUCATIONAL_KERNEL" == "0" ]; then
