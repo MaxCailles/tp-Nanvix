@@ -11,6 +11,12 @@
         "fcntl.h": "c",
         "syscall.h": "c",
         "stat.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "accounts.h": "c",
+        "utsname.h": "c",
+        "tty.h": "c",
+        "config.h": "c",
+        "limits.h": "c",
+        "string.h": "c"
     }
 }

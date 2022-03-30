@@ -86,6 +86,7 @@
  	#define NR_semctl   49
  	#define NR_semop    50
 
+
 #ifndef _ASM_FILE_
 
 	/* System calls prototypes. */
@@ -278,6 +279,8 @@
 	* Call for atomic operations on a semaphore
 	*/
 	EXTERN int sys_semop(int semid, int op);
+
+	
 
 
 

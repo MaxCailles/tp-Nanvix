@@ -144,6 +144,9 @@ nim:
 sleep: 
 	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE sleep/*.c -o $(UBINDIR)/sleep $(LIBDIR)/libc.a
 
+# Builds sleep.
+sleep: 
+	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE passwd/*.c -o $(UBINDIR)/passwd $(LIBDIR)/libc.a
 
 # Clean compilation files.
 clean:
@@ -171,3 +174,4 @@ clean:
 	@rm -f $(UBINDIR)/clear
 	@rm -f $(UBINDIR)/nim
 	@rm -f $(UBINDIR)/sleep
+	@rm -f $(UBINDIR)/passwd
