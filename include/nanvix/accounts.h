@@ -57,7 +57,7 @@
 			if (str[i] == '\0')
 				return;
 			
-			str[i] += key;
+			str[i] += key ;
 		}
 	}
 	
@@ -75,7 +75,7 @@
 			if (str[i] == '\0')
 				return;
 			
-			str[i] -= key;
+			str[i] -= key ;
 		}
 	}
 

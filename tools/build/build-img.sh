@@ -99,8 +99,8 @@ function passwords
 	file="passwords"
 
 	bin/useradd $file root root $ROOTGID $ROOTUID
-	bin/useradd $file noob noob $NOOBGID $NOOBUID
-	bin/useradd $file maxime cailles $MAXIMEGID $MAXIMEUID
+	bin/useradd $file noob noob $NOOBUID $NOOBUID
+	#bin/useradd $file maxime cailles $MAXIMEUID $MAXIMEUID
 
 	# Let's care about security...
 	if [ "$EDUCATIONAL_KERNEL" == "0" ]; then

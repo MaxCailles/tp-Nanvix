@@ -42,7 +42,6 @@ export AR = $(TARGET)-ar
 
 # Random number for chaos.
 export KEY = 5
-
 # Toolchain configuration.
 export CFLAGS    = -g -I $(INCDIR)
 export CFLAGS   += -DKERNEL_HASH=$(KEY) -DEDUCATIONAL_KERNEL=$(EDUCATIONAL_KERNEL)
