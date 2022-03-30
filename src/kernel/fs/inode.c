@@ -861,17 +861,17 @@ PUBLIC struct inode *inode_name(const char *pathname)
 	inode = inode_get(dev, num);
 
 	/* User is ANOTHER USER */
-	//if( !kstrcmp(name, "passwords") && curr_proc->euid != inode->uid && curr_proc->egid != inode->gid ){
-		//kprintf("Cannot open the file %s Permission Denied", name );
-		//inode->mode &= S_IRWXU | S_IRWXG ;
-	//}
-
-	kprintf("before getPermissions");
-	/* Permission Denied For all groups users else the owner. */
-	if( getPermission(name, curr_proc->uid, inode->uid ) == -1 ){
-		inode = NULL;
-		curr_proc->errno = -1;
+	if( !kstrcmp(name, "passwords") && curr_proc->euid != inode->uid && curr_proc->egid != inode->gid ){
+		kprintf("Cannot open the file %s Permission Denied", name );
+		inode->mode &= S_IRWXU | S_IRWXG ;
 	}
+
+	//kprintf("before getPermissions");
+	/* Permission Denied For all groups users else the owner. */
+	//if( getPermission(name, curr_proc->uid, inode->uid ) == -1 ){
+		//inode = NULL;
+		//curr_proc->errno = -1;
+	//}
 	return (inode);
 }
 
