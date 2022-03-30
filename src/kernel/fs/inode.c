@@ -468,6 +468,22 @@ error0:
 	return (NULL);
 }
 
+
+/*
+ * Gets file status.
+ * Return -2 if permission denied or 0 else
+ */
+int getPermission(const char *filename, uid_t uid, uid_t uid_inode)
+{
+	if( !kstrcmp(filename, "passwords") && uid != uid_inode ){
+		kprintf("Cannot open the file %s Permission denied, You aren't the user owner", filename);
+		return -1;
+	}
+	return 0;
+}
+
+
+
 /**
  * @brief Gets an inode.
  * 
@@ -520,7 +536,6 @@ repeat:
 	ip = inode_read(dev, num);
 	if (ip == NULL)
 		return (NULL);
-	
 	inode_cache_insert(ip);
 	
 	return (ip);
@@ -601,7 +616,7 @@ PUBLIC void inode_put(struct inode *ip)
 {
 	/* Double free. */
 	if (ip->count == 0)
-		kpanic("freeing inode twice");
+		//kpanic("freeing inode twice");
 	
 	/* Release underlying resources. */
 	if (--ip->count == 0)
@@ -725,7 +740,7 @@ PUBLIC struct inode *inode_dname(const char *path, const char **name)
 		}
 
 again:
-		
+		//kprintf("Filename is : %s", *p);
 		/* Permission denied. */
 		if (!permission(i->mode, i->uid, i->gid, curr_proc, MAY_EXEC, 0))
 		{
@@ -812,17 +827,21 @@ PUBLIC struct inode *inode_name(const char *pathname)
 	const char *name;    /* File name.     */
 	struct inode *inode; /* Working inode. */
 	
+	//kprintf("before inode_dnome");
 	inode = inode_dname(pathname, &name);
 	
 	/* Failed to get directory inode. */
 	if (inode == NULL)
 		return (NULL);
-		
+	//kprintf("after inode_dnome %d %s", inode->num, name);
+
 	/* Special treatment for the root directory. */
 	if (!kstrcmp(name,"/"))
 		num = curr_proc->root->num;
-	else
+	else{ 
+		//kprintf("before dir_search");
 		num = dir_search(inode, name);
+	}
 
 	/* File not found. */
 	if (num == INODE_NULL)
@@ -831,11 +850,29 @@ PUBLIC struct inode *inode_name(const char *pathname)
 		curr_proc->errno = -ENOENT;
 		return (NULL);
 	}
+	//kprintf("after dir_search num");
 
+	//mode_t permit = permission(i->mode, i->uid, i->gid, curr_proc, MAY_EXEC, 0)
 	dev = inode->dev;	
 	inode_put(inode);
-	
-	return (inode_get(dev, num));
+	//kprintf("after inode_put");
+
+	/* Inode of the file */
+	inode = inode_get(dev, num);
+
+	/* User is ANOTHER USER */
+	//if( !kstrcmp(name, "passwords") && curr_proc->euid != inode->uid && curr_proc->egid != inode->gid ){
+		//kprintf("Cannot open the file %s Permission Denied", name );
+		//inode->mode &= S_IRWXU | S_IRWXG ;
+	//}
+
+	kprintf("before getPermissions");
+	/* Permission Denied For all groups users else the owner. */
+	if( getPermission(name, curr_proc->uid, inode->uid ) == -1 ){
+		inode = NULL;
+		curr_proc->errno = -1;
+	}
+	return (inode);
 }
 
 /**

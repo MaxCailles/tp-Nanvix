@@ -168,12 +168,11 @@ int main(int argc, char *const argv[])
 			/* Check if file is not a directory. */
 			else
 			{
-				if (stat(filename, &st) == -1)
+				if ( stat(filename, &st) == -1)
 				{
 					fprintf(stderr, "cat: cannot stat %s\n", filename);
 					continue;
 				}
-				
 				/* File is directory. */
 				if (S_ISDIR(st.st_mode))
 				{

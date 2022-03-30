@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "pm.h": "c",
-        "sem.h": "c"
+        "sem.h": "c",
+        "clock.h": "c",
+        "config.h": "c",
+        "const.h": "c",
+        "errno.h": "c",
+        "types.h": "c"
     }
 }

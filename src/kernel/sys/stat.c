@@ -22,7 +22,7 @@
 #include <nanvix/mm.h>
 #include <sys/stat.h>
 #include <errno.h>
-
+#include <nanvix/pm.h>
 /*
  * Gets file status.
  */
@@ -37,9 +37,8 @@ PUBLIC int sys_stat(const char *path, struct stat *buf)
 	ip = inode_name(path);
 	
 	/* Failed to get inode. */
-	if (ip == NULL)
+	if (ip == NULL )
 		return (curr_proc->errno);
-	
 	buf->st_dev = ip->dev;
 	buf->st_ino = ip->num;
 	buf->st_mode = ip->mode;
@@ -55,3 +54,5 @@ PUBLIC int sys_stat(const char *path, struct stat *buf)
 	
 	return (0);
 }
+
+
